@@ -82,8 +82,16 @@ async function drawTodoList() {
 
     // 2. 내용 채우고 이벤트 리스너 등록하기
     const bodyEl = fragment.querySelector('.body')
+    const deleteEl = fragment.querySelector('.delete')
 
     bodyEl.textContent = todoItem.body
+
+    deleteEl.addEventListener('click', async e => {
+      // 삭제 요청 보내기
+      await api.delete('/todos/' + todoItem.id)
+      // 성공 시 할 일 목록 다시 그리기
+      drawTodoList()
+    })
 
     // 3. 문서 내부에 삽입하기
     todoListEl.appendChild(fragment)
