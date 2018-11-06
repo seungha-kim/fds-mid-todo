@@ -74,15 +74,15 @@ async function drawTodoList() {
   })
 
   todoFormEl.addEventListener('submit', async e => {
+    document.body.classList.add('loading')
     e.preventDefault()
     const body = e.target.elements.body.value
     const res = await api.post('/todos', {
       body,
       complete: false
     })
-    if (res.status === 201) {
-      drawTodoList()
-    }
+    await drawTodoList()
+    document.body.classList.remove('loading')
   })
 
   list.forEach(todoItem => {
@@ -101,7 +101,8 @@ async function drawTodoList() {
     bodyEl.textContent = todoItem.body
 
     completeEl.addEventListener('click', async e => {
-      e.preventDefault()
+      // 주석을 풀면 비관적 업데이트 방식으로 변함
+      // e.preventDefault()
       await api.patch('/todos/' + todoItem.id, {
         complete: !todoItem.complete
       })
