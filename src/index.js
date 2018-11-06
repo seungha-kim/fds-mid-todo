@@ -132,3 +132,8 @@ if (localStorage.getItem('token')) {
   drawLoginForm()
 }
 
+// 마무리하며
+// - Netlify 배포
+// - 비관적 업데이트 / 낙관적 업데이트
+// - 로딩 인디케이터
+// - 페이지를 완전히 새로 그리는 방식에 대하여
