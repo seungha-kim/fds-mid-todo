@@ -81,6 +81,8 @@ async function drawTodoList() {
       body,
       complete: false
     })
+    // drawTodoList 함수의 실행이 끝날 때까지 기다림
+    // Promise에는 undefined가 채워짐
     await drawTodoList()
     document.body.classList.remove('loading')
   })
