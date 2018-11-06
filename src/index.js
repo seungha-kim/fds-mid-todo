@@ -102,4 +102,11 @@ async function drawTodoList() {
   rootEl.appendChild(fragment)
 }
 
-drawLoginForm()
+// 만약 로그인을 한 상태라면 바로 할 일 목록을 보여주고
+if (localStorage.getItem('token')) {
+  drawTodoList()
+} else {
+  // 아니라면 로그인 폼을 보여준다.
+  drawLoginForm()
+}
+
